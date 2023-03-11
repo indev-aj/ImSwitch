@@ -23,6 +23,12 @@ class PositionerController(ImConWidgetController):
             hasSpeed = hasattr(pManager, 'speed')
             hasHome = hasattr(pManager, 'home')
             hasStop = hasattr(pManager, 'stop')
+
+            hasSpeed = False
+            hasHome = False
+            hasStop = False
+
+            self.hasSpeed = hasSpeed
             self._widget.addPositioner(pName, pManager.axes, hasSpeed, hasHome, hasStop)
             for axis in pManager.axes:
                 self.setSharedAttr(pName, axis, _positionAttr, pManager.position[axis])
@@ -58,10 +64,12 @@ class PositionerController(ImConWidgetController):
         """ Moves positioner by dist micrometers in the specified axis. """
         if positionerName is None:
             positionerName = self._master.positionersManager.getAllDeviceNames()[0]
-
-        # get all speed values from the GUI        
-        speed = self._widget.getSpeed(positionerName, axis)
-        self.setSpeed(positionerName=positionerName, speed=speed, axis=axis)
+        
+        if self.hasSpeed:
+            # get all speed values from the GUI        
+            speed = self._widget.getSpeed(positionerName, axis)
+            self.setSpeed(positionerName=positionerName, speed=speed, axis=axis)
+            
         try:
             self._master.positionersManager[positionerName].move(dist, axis, isAbsolute, isBlocking)
         except:

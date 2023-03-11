@@ -39,15 +39,10 @@ class PositionerWidget(Widget):
             self.pars['AbsolutePosButton' + parNameSuffix] = guitools.BetterPushButton('Go!')
 
             self.grid.addWidget(self.pars['Label' + parNameSuffix], self.numPositioners, 0)
-            self.grid.addWidget(self.pars['Position' + parNameSuffix], self.numPositioners, 1)
-            self.grid.addWidget(self.pars['UpButton' + parNameSuffix], self.numPositioners, 2)
-            self.grid.addWidget(self.pars['DownButton' + parNameSuffix], self.numPositioners, 3)
-            self.grid.addWidget(QtWidgets.QLabel('Rel'), self.numPositioners, 4)
-            self.grid.addWidget(self.pars['StepEdit' + parNameSuffix], self.numPositioners, 5)
-            self.grid.addWidget(QtWidgets.QLabel('Abs'), self.numPositioners, 6)
+            self.grid.addWidget(QtWidgets.QLabel('Abs'), self.numPositioners, 1)
             
-            self.grid.addWidget(self.pars['AbsolutePosEdit' + parNameSuffix], self.numPositioners, 7)
-            self.grid.addWidget(self.pars['AbsolutePosButton' + parNameSuffix], self.numPositioners, 8)
+            self.grid.addWidget(self.pars['AbsolutePosEdit' + parNameSuffix], self.numPositioners, 2)
+            self.grid.addWidget(self.pars['AbsolutePosButton' + parNameSuffix], self.numPositioners, 3)
             
            
             if hasSpeed:

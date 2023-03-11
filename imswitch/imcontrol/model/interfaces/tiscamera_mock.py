@@ -100,6 +100,9 @@ class MockCameraTIS:
     def flushBuffer(self):
         pass 
 
+    def set_binning(self, binning=1):
+        pass
+
 # Copyright (C) 2020-2021 ImSwitch developers
 # This file is part of ImSwitch.
 #
