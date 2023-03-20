@@ -20,7 +20,7 @@ class ESP32LEDLaserManagerEE(LaserManager):
         self.__channel_index = laserInfo.managerProperties['channel_index']
         self.laserval = 0
         self.enabled = False
-        super().__init__(laserInfo, name, isBinary=False, valueUnits='arb', valueDecimals=0)
+        super().__init__(laserInfo, name, isBinary=True, valueUnits='arb', valueDecimals=0)
         self._rs232manager._esp32.set_laser_intensity(self.enabled*self.laserval)
 
     def setEnabled(self, enabled):

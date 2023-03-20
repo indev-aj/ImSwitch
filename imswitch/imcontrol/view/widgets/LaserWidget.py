@@ -81,7 +81,8 @@ class LaserWidget(Widget):
         self.presetsBox.addWidget(self.savePresetAsButton)
         self.presetsBox.addWidget(self.moreButton)
 
-        self.layout.addLayout(self.presetsBox, 1, 0)
+        # remove all presets option
+        # self.layout.addLayout(self.presetsBox, 1, 0)
 
     def addLaser(self, laserName, valueUnits, valueDecimals, wavelength, valueRange=None,
                  valueRangeStep=1, frequencyRange=(0, 0, 0)):
@@ -347,7 +348,7 @@ class LaserModule(QtWidgets.QWidget):
         self.layout = QtWidgets.QHBoxLayout()
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.layout)
-        self.layout.addWidget(powerFrame)
+        # self.layout.addWidget(powerFrame)
         if isBinary:
             sizePolicy = powerFrame.sizePolicy()
             sizePolicy.setRetainSizeWhenHidden(True)
