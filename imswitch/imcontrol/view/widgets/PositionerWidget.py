@@ -2,6 +2,7 @@ from qtpy import QtCore, QtWidgets
 
 from imswitch.imcontrol.view import guitools as guitools
 from .basewidgets import Widget
+from imswitch.imcommon.model import initLogger
 
 
 class PositionerWidget(Widget):
@@ -20,6 +21,8 @@ class PositionerWidget(Widget):
         self.pars = {}
         self.grid = QtWidgets.QGridLayout()
         self.setLayout(self.grid)
+
+        self.__logger = initLogger(self, instanceName="widget")
 
     def addPositioner(self, positionerName, axes, hasSpeed, hasHome=True, hasStop=True):
         for i in range(len(axes)):
@@ -43,7 +46,9 @@ class PositionerWidget(Widget):
             
             self.grid.addWidget(self.pars['AbsolutePosEdit' + parNameSuffix], self.numPositioners, 2)
             self.grid.addWidget(self.pars['AbsolutePosButton' + parNameSuffix], self.numPositioners, 3)
-            
+
+            # set maximum width of text box for absolute value
+            self.pars['AbsolutePosEdit' + parNameSuffix].setMaximumWidth(50)
            
             if hasSpeed:
                 self.pars['Speed' + parNameSuffix] = QtWidgets.QLabel('Speed:')
